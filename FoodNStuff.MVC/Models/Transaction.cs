@@ -17,7 +17,6 @@ namespace FoodNStuff.MVC.Models
         [ForeignKey(nameof(Product))]
         public int ProductID { get; set; }
         public virtual Product Product { get; set; }
-        public int CreditCard { get; set; }
 
     }
 }

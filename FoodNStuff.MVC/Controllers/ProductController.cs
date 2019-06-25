@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -37,5 +38,34 @@ namespace FoodNStuff.MVC.Controllers
             _db.SaveChanges();
             return RedirectToAction("index");
         }
+        //Get: Details {id}
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult
+                    (HttpStatusCode.BadRequest);
+            Product product = _db.Products.Find(id);
+
+            if (product == null)
+                return HttpNotFound();
+
+            return View(product);
+        }
+        //Get: Product Edit {id}
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult
+                (HttpStatusCode.BadRequest);
+            }
+            Product product = _db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
     }
 }

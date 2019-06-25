@@ -11,6 +11,7 @@ namespace FoodNStuff.MVC.Models
         [Key]
         public int ProductID { get; set; }
         [Required]
+        [Display(Name = "ProductName")]
         public string ProductName { get; set; }
         [Required]
         [Display(Name = "# In Stock")]
